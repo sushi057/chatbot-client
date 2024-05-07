@@ -1,11 +1,11 @@
-import { Bot, CircleUserRound } from "lucide-react";
+import { Bot, SquareUser } from "lucide-react";
 
 type chatProps = {
   chatType: "bot" | "user";
-  messageText: string;
+  chatText: string;
 };
 
-function ChatMessage({ chatType, messageText }: chatProps) {
+function ChatMessage({ chatType, chatText }: chatProps) {
   return (
     <div
       className={`${chatType === "bot" ? "float-left" : "float-right"} mb-4 w-4/5`}
@@ -13,7 +13,7 @@ function ChatMessage({ chatType, messageText }: chatProps) {
       <div
         className={`flex flex-col  ${chatType === "bot" ? "items-start" : "items-end"} gap-1`}
       >
-        <div className={`ml-2 flex items-center gap-1.5 text-lg font-semibold`}>
+        <div className={`ml-2 flex items-end gap-0.5 text-sm font-semibold`}>
           {chatType === "bot" ? (
             <>
               <Bot />
@@ -21,15 +21,15 @@ function ChatMessage({ chatType, messageText }: chatProps) {
             </>
           ) : (
             <>
-              <CircleUserRound />
-              <p className="pr-1">User</p>
+              <SquareUser />
+              <p className="pr-2">User</p>
             </>
           )}
         </div>
         <div
-          className={`flex w-fit items-center ${chatType === "bot" ? "justify-start" : "justify-start"} rounded-xl bg-neutral-700/70 px-2.5 py-3`}
+          className={`flex w-fit items-center ${chatType === "bot" ? "justify-start" : "justify-start bg-green-700"} rounded-xl bg-neutral-700/70 px-3 py-2`}
         >
-          {messageText}
+          {chatText}
         </div>
       </div>
     </div>
