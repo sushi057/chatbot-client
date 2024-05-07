@@ -12,7 +12,11 @@ type messagesProps = {
 function App() {
   const [inputText, setInputText] = useState("");
   const [messages, setMessages] = useState<messagesProps[]>([
-    { chatType: "bot", chatText: "Hello how may I help you today?" },
+    {
+      chatType: "bot",
+      chatText:
+        "Hello, I'm a recruitment bot at Niural. How can I help you today?",
+    },
   ]);
   const messageRef = useRef<HTMLDivElement>(null);
 
@@ -31,9 +35,12 @@ function App() {
     ]);
 
     // fetch response from api
-    const response = await axios.post("http://localhost:3001/ask", {
-      question: inputText,
-    });
+    const response = await axios.post(
+      "https://chatbot-server-lake.vercel.app/ask",
+      {
+        question: inputText,
+      },
+    );
     console.log(response.data);
 
     setMessages((prevMessages) => [
