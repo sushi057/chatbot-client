@@ -27,7 +27,7 @@ function ChatMessage({ chatType, chatText }: chatProps) {
           )}
         </div>
         <div
-          className={`flex w-fit items-center ${chatType === "bot" ? "justify-start" : "justify-start bg-green-700"} rounded-xl bg-neutral-700/70 px-3 py-2`}
+          className={`flex w-fit items-center ${chatType === "bot" ? "justify-start" : "justify-start bg-green-600"} rounded-xl bg-neutral-700/70 px-3 py-2`}
         >
           {chatText}
         </div>

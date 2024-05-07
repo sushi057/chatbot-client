@@ -11,7 +11,7 @@ function SearchBar({
   setInputText: React.Dispatch<React.SetStateAction<string>>;
 }) {
   return (
-    <div className="flex items-center rounded-lg bg-neutral-700/70 py-0.5 pl-1 pr-4">
+    <div className=" sticky bottom-0 flex items-center rounded-lg bg-neutral-700 py-0.5 pl-1 pr-4">
       <Input
         onKeyDown={(e) => {
           if (e.key === "Enter") {
@@ -23,7 +23,7 @@ function SearchBar({
         value={inputText}
         onChange={(e) => setInputText(e.target.value)}
         type="text"
-        className="rounded-lg border-none bg-neutral-700/0 font-semibold hover:border-none focus:border-none"
+        className="rounded-lg border-none bg-neutral-700/0 text-base placeholder:text-green-600 hover:border-none focus:border-none"
         placeholder="Type your message"
       />
       <Send
