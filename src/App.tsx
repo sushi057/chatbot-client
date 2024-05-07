@@ -4,7 +4,6 @@ import SearchBar from "./components/SearchBar";
 import axios from "axios";
 import { v4 as uuid } from "uuid";
 // import { Icons } from "./components/utils/Icons";
-import ReactLoading from "react-loading";
 
 type messagesProps = {
   chatType: "bot" | "user";
@@ -57,7 +56,7 @@ function App() {
 
   return (
     <main className="h-screen bg-neutral-700/70 px-14 py-6">
-      <div className="bg-primary scrollbar relative flex h-full flex-col justify-between overflow-scroll rounded-3xl p-10 pr-4 pb-4 text-white">
+      <div className="bg-primary scrollbar relative flex h-full flex-col justify-between overflow-scroll rounded-3xl p-10 pb-4 pr-4 text-white">
         <section>
           {messages.map((item, index) => (
             <>
