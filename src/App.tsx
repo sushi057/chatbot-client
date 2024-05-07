@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ChatMessage from "./components/ChatMessage";
 import SearchBar from "./components/SearchBar";
 import axios from "axios";
@@ -16,6 +16,7 @@ function App() {
     { chatType: "bot", chatText: "Hello how may I help you today?" },
   ]);
   const [loading, setLoading] = useState(false);
+  const messageRef = useRef<HTMLDivElement>(null);
 
   const handleClick = async () => {
     setLoading(true);
@@ -54,6 +55,12 @@ function App() {
     setInputText("");
   };
 
+  useEffect(() => {
+    if (messageRef.current) {
+      messageRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [messages]);
+
   return (
     <main className="h-screen bg-neutral-700/70 px-14 py-6">
       <div className="bg-primary scrollbar relative flex h-full flex-col justify-between overflow-scroll rounded-3xl p-10 pb-4 pr-4 text-white">
@@ -65,12 +72,10 @@ function App() {
                 chatText={item.chatText}
                 chatType={item.chatType}
               />
-              {index === messages.length - 1 &&
-                loading &&
-                item.chatType === "bot" && <p>Hello</p>}
             </>
           ))}
         </section>
+        <div ref={messageRef} />
         <SearchBar
           handleClick={handleClick}
           inputText={inputText}
