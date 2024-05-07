@@ -3,7 +3,6 @@ import ChatMessage from "./components/ChatMessage";
 import SearchBar from "./components/SearchBar";
 import axios from "axios";
 import { v4 as uuid } from "uuid";
-// import { Icons } from "./components/utils/Icons";
 
 type messagesProps = {
   chatType: "bot" | "user";
@@ -15,12 +14,9 @@ function App() {
   const [messages, setMessages] = useState<messagesProps[]>([
     { chatType: "bot", chatText: "Hello how may I help you today?" },
   ]);
-  const [loading, setLoading] = useState(false);
   const messageRef = useRef<HTMLDivElement>(null);
 
   const handleClick = async () => {
-    setLoading(true);
-
     if (!inputText.trim()) {
       setInputText("");
       return;
@@ -51,7 +47,6 @@ function App() {
     console.log(messages);
 
     // Finish operation
-    setLoading(false);
     setInputText("");
   };
 
@@ -63,16 +58,14 @@ function App() {
 
   return (
     <main className="h-screen bg-neutral-700/70 px-14 py-6">
-      <div className="bg-primary scrollbar relative flex h-full flex-col justify-between overflow-scroll rounded-3xl p-10 pb-4 pr-4 text-white">
+      <div className="relative flex h-full flex-col justify-between overflow-scroll rounded-3xl bg-primary p-10 pb-4 pr-4 text-white scrollbar">
         <section>
-          {messages.map((item, index) => (
-            <>
-              <ChatMessage
-                key={uuid()}
-                chatText={item.chatText}
-                chatType={item.chatType}
-              />
-            </>
+          {messages.map((item) => (
+            <ChatMessage
+              key={uuid()}
+              chatText={item.chatText}
+              chatType={item.chatType}
+            />
           ))}
         </section>
         <div ref={messageRef} />
